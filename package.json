@@ -1,0 +1,18 @@
+{
+  "name": "greenlit-sparring",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Small utilities with tests. A sparring partner for autonomous engineering pipelines: real issues, real CI, real pull requests.",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "node scripts/lint.mjs"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
