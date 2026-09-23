@@ -14,4 +14,10 @@ describe('fetchJson', () => {
   it('rejects a non-positive timeout', async () => {
     await expect(fetchJson('https://example.test/x', { timeoutMs: 0 })).rejects.toThrow(RangeError);
   });
+  it('rejects with a timeout error when fetchImpl never resolves', async () => {
+    const neverResolves = () => new Promise(() => {});
+    await expect(
+      fetchJson('https://example.test/x', { fetchImpl: neverResolves, timeoutMs: 50 }),
+    ).rejects.toThrow('fetchJson: timed out after 50 ms for https://example.test/x');
+  });
 });
