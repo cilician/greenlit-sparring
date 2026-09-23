@@ -14,5 +14,5 @@ export async function retry(fn, { attempts = 3, delayMs = 0, onError } = {}) {
       if (attempt < attempts && delayMs > 0) await new Promise((resolve) => setTimeout(resolve, delayMs));
     }
   }
-  if (lastError instanceof TypeError) throw lastError;
+  throw lastError;
 }
