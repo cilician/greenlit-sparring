@@ -12,4 +12,12 @@ describe('slugify', () => {
     expect(slugify('')).toBe('');
     expect(slugify(null)).toBe('');
   });
+  it('collapses runs of separators to a single dash', () => {
+    expect(slugify('Hello,  World!')).toBe('hello-world');
+    expect(slugify('C++ & Rust')).toBe('c-rust');
+  });
+  it('trims every dash at the edges', () => {
+    expect(slugify('  --a--  ')).toBe('a');
+    expect(slugify('!!!')).toBe('');
+  });
 });
